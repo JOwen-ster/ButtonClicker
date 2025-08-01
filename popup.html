@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 350px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            margin: 0 0 20px 0;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        #startBtn {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        #stopBtn {
+            background: #f44336;
+            color: white;
+        }
+        
+        button:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .status.active {
+            background: rgba(76, 175, 80, 0.3);
+        }
+        
+        .status.inactive {
+            background: rgba(244, 67, 54, 0.3);
+        }
+        
+        .stats {
+            margin-top: 10px;
+            font-size: 12px;
+            text-align: center;
+            opacity: 0.8;
+        }
+        
+        .help-text {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Auto Button Clicker</h1>
+        
+        <div class="form-group">
+            <label for="buttonSelector">Button Selector:</label>
+            <input type="text" id="buttonSelector" placeholder="e.g., #my-button, .btn-submit" />
+            <div class="help-text">CSS selector or XPath for the button</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="waitTime">Wait Time (minutes):</label>
+            <select id="waitTime">
+                <option value="1">1 minute</option>
+                <option value="5">5 minutes</option>
+                <option value="10">10 minutes</option>
+                <option value="30" selected>30 minutes</option>
+                <option value="60">1 hour</option>
+            </select>
+        </div>
+        
+        <div class="button-group">
+            <button id="startBtn">Start Monitoring</button>
+            <button id="stopBtn" disabled>Stop</button>
+        </div>
+        
+        <div id="status" class="status inactive">
+            Status: Inactive
+        </div>
+        
+        <div id="stats" class="stats">
+            Clicks: 0 | Last Click: Never
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>

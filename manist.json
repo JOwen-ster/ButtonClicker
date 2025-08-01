@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Auto Button Clicker",
+    "version": "1.0",
+    "description": "Automatically waits for and clicks buttons on web pages",
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Auto Button Clicker"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
